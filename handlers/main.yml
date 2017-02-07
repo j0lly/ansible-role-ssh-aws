@@ -1,0 +1,8 @@
+---
+- name: restart sshd
+  service: name=sshd state=restarted
+  listen: "sshd changed"
+- name: users first sync
+  command: "{{ ssh_aws_import_user_path }}"
+  listen: "sync users"
+  when: ssh_aws_first_sync

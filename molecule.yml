@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: vagrant
+
+vagrant:
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+        memory: 512
+        cpus: 2
+  platforms:
+    - name: centos7
+      box: centos/7
+    #    - name: amzn_linux
+    #      box: mvbcoding/awslinux
+  instances:
+    - name: default
+
+verifier:
+  name: testinfra

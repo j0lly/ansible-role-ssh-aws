@@ -1,0 +1,6 @@
+---
+ssh_aws_first_sync: false
+
+ssh_aws_authkey_command_path: '/opt/authorized_key_command.sh'
+ssh_aws_user: 'nobody'
+ssh_aws_import_user_path: '/opt/import_users.sh'

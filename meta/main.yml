@@ -1,0 +1,18 @@
+galaxy_info:
+  author: j0lly
+  description: provides AuthorizedKeyCommand script to let ssh into ec2 instance to iam users with ssh public key uploaded
+  license: BSD
+  min_ansible_version: 2.2.1.0
+
+  platforms:
+  - name: EL
+    versions:
+    - 7
+  - name: Amazon
+    versions:
+    - all
+  categories:
+    - ssh
+  galaxy_tags:
+    - ssh
+    - infrastructure

@@ -1,0 +1,39 @@
+---
+#Install dependencies
+- name: 'Ensure EPEL installed'
+  yum: pkg=epel-release state=installed
+- name: 'Ensure Python PIP installed on amzn_linux'
+  yum: pkg=python27-pip state=installed
+  when: ansible_distribution == 'Amazon'
+- name: 'Ensure Python PIP installed on centos7'
+  yum: pkg=python2-pip state=installed
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+- name: 'Ensure AWS CLI installed'
+  pip: name=awscli state=present
+
+# Move files
+- name: sshd configuration file update
+  template:
+    src=templates/sshd_config.j2
+    dest=/etc/ssh/sshd_config
+    backup=yes
+    owner=0 group=0 mode=0644
+    validate='/usr/sbin/sshd -T -f %s'
+  notify:
+  - "sshd changed"
+- name: copy import_user.sh
+  copy:
+    src: files/import_users.sh
+    dest: "{{ ssh_aws_import_user_path }}"
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+  - "sync users"
+- name: copy AuthorizedKeysCommand script
+  copy:
+    src: files/authorized_key_command.sh
+    dest: "{{ ssh_aws_authkey_command_path }}"
+    owner: root
+    group: root
+    mode: 0755
