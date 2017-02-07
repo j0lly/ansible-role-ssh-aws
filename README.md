@@ -35,10 +35,12 @@ ssh_aws_import_user_path: '/opt/import_users.sh'
 Example Playbook
 ----------------
 
+```yaml
     - hosts: all
       roles:
          - {role: j0lly.ansible-role-ssh-aws,
             ssh_aws_first_sync: true}
+```
 
 License
 -------
