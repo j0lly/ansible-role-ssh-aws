@@ -1,13 +1,11 @@
 ---
-#Install dependencies
+- name: Add the OS specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
 - name: 'Ensure EPEL installed'
   yum: pkg=epel-release state=installed
-- name: 'Ensure Python PIP installed on amzn_linux'
-  yum: pkg=python27-pip state=installed
-  when: ansible_distribution == 'Amazon'
-- name: 'Ensure Python PIP installed on centos7'
-  yum: pkg=python2-pip state=installed
-  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+- name: 'Ensure Python PIP installed'
+  yum: pkg={{ ssh_aws_pip_version }} state=installed
 - name: 'Ensure AWS CLI installed'
   pip: name=awscli state=present
 
@@ -28,8 +26,6 @@
     owner: root
     group: root
     mode: 0755
-  notify:
-  - "sync users"
 - name: copy AuthorizedKeysCommand script
   copy:
     src: files/authorized_key_command.sh
@@ -37,3 +33,13 @@
     owner: root
     group: root
     mode: 0755
+- name: import_users cron
+  cron:
+    name: import_users cron
+    minute: "*/5"
+    user: root
+    job: "{{ ssh_aws_import_user_path }}"
+    cron_file: import_users
+    state: present
+  notify:
+  - "sync users"
