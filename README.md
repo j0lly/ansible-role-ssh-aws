@@ -1,4 +1,4 @@
-ansible-role-ssh-aws
+ssh aws sync
 =========
 
 This Role provides a setup for an ssh aws pub key based lookup for ec2 instances
