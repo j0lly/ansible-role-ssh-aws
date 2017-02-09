@@ -6,6 +6,7 @@ This Role provides a setup for an ssh aws pub key based lookup for ec2 instances
 This role enhance the job done by [widdix](https://github.com/widdix/aws-ec2-ssh)
 
 [![AnsibleGalaxy](https://img.shields.io/badge/role-j0lly.ssh--aws-red.svg)](https://galaxy.ansible.com/j0lly/ssh-aws/)
+[![Build Status](https://travis-ci.org/j0lly/ansible-role-ssh-aws.svg?branch=master)](https://travis-ci.org/j0lly/ansible-role-ssh-aws)
 
 Requirements
 ------------
