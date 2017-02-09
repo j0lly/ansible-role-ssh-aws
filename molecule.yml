@@ -3,22 +3,18 @@ dependency:
   name: galaxy
 
 driver:
-  name: vagrant
+  name: docker
 
-vagrant:
-  providers:
-    - name: virtualbox
-      type: virtualbox
-      options:
-        memory: 512
-        cpus: 2
-  platforms:
+docker:
+  containers:
     - name: centos7
-      box: centos/7
-    #    - name: amzn_linux
-    #      box: mvbcoding/awslinux
-  instances:
-    - name: default
-
+      image: centos
+      image_version: 7
+      privileged: True
+      command: '/usr/lib/systemd/systemd'
+    - name: amzn_linux
+      image: amazonlinux
+      image_version: latest
+      privileged: True
 verifier:
   name: testinfra

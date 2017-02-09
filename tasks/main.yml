@@ -8,6 +8,10 @@
   yum: pkg={{ ssh_aws_pip_version }} state=installed
 - name: 'Ensure AWS CLI installed'
   pip: name=awscli state=present
+- name: 'Ensure ssh installed'
+  yum: pkg=openssh-server state=installed
+- name: 'Ensure cron installed'
+  yum: pkg=cronie state=installed
 
 # Move files
 - name: sshd configuration file update
