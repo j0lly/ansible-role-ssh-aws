@@ -39,13 +39,13 @@ Example Playbook
 ----------------
 
 ```yaml
-    - hosts: all
-      roles:
-         - {role: j0lly.ansible-role-ssh-aws,
-            ssh_aws_first_sync: true}
+- hosts: all
+  roles:
+    - {role: j0lly.ssh-aws,
+       ssh_aws_first_sync: true}
 ```
 
 License
 -------
 
-BSD
+[BSD](LICENSE)
