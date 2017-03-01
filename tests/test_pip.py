@@ -13,5 +13,4 @@ def test_pip_is_installed(Package, SystemInfo):
     else:
         raise ValueError(
                 "Unsupported distribution: " + SystemInfo.distribution)
-
     assert pip.is_installed

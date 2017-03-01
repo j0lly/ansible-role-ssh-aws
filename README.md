@@ -15,7 +15,38 @@ The ec2 instance need to be able to perform iam calls, possibly via an instance 
  - "iam:GetSSHPublicKey"
  - "iam:ListSSHPublicKeys"
  - "iam:ListUsers"
+ - "iam:GetGroup"
 
+**role should look like:**
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1471562879000",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ListUsers",
+        "iam:GetGroup"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Sid": "Stmt1471562943000",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetSSHPublicKey",
+        "iam:ListSSHPublicKeys"
+      ],
+      "Resource": [
+        "arn:aws:iam::<YOUR_ACCOUNT_ID_HERE>:user/*"
+      ]
+    }
+  ]
+}
+```
 
 Role Variables
 --------------
