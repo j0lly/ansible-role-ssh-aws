@@ -11,8 +11,7 @@ galaxy_info:
   - name: Amazon
     versions:
     - all
-  categories:
-    - ssh
   galaxy_tags:
     - ssh
+    - aws
     - infrastructure
