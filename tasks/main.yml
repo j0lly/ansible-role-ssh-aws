@@ -3,7 +3,7 @@
   include_vars: "{{ ansible_distribution }}.yml"
 
 - name: 'Ensure EPEL installed'
-  yum: pkg=epel-release state=installed  
+  yum: pkg=epel-release state=installed
 # Causes an error if we try and which something that doesn't exist so use this
 # as a workaround.
 - name: Check to see if pip is already installed.
