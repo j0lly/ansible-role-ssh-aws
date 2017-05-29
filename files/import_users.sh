@@ -3,7 +3,7 @@
 # Specify an IAM group for users who should be given sudo privileges, or leave
 # empty to not change sudo access, or give it the value '##ALL##' to have all
 # users be given sudo rights.
-SudoersGroup=""
+SudoersGroup="$1"
 [[ -z "${SudoersGroup}" ]] || [[ "${SudoersGroup}" == "##ALL##" ]] || Sudoers=$(
   aws iam get-group --group-name "${SudoersGroup}" --query "Users[].[UserName]" --output text
 );
