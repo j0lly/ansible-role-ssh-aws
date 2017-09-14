@@ -19,6 +19,8 @@
   pip: name=awscli state=present
 - name: 'Ensure ssh installed'
   yum: pkg=openssh-server state=installed
+- name: 'Start sshd'
+  service: name=sshd state=started
 - name: 'Ensure cron installed'
   yum: pkg=cronie state=installed
 
